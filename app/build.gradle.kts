@@ -87,6 +87,6 @@ dependencies {
     retrofitLibs()
     okHttpsLibs()
     frescoLibs()
+    rxLibs()
     testLibs()
-
 }
