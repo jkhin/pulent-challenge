@@ -1,4 +1,4 @@
-package io.jk.pulent.challenge.core.utils.extensions
+package io.jk.pulent.challenge.core.extensions
 
 inline fun <reified T : Any> listByElementOf(vararg elements: Any): List<T> {
     val mLst: MutableList<T>  = mutableListOf()

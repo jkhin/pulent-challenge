@@ -5,7 +5,8 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 
 fun DependencyHandlerScope.retrofitLibs() = with(this) {
     retrofitLib()
-    retrofitMoshiLib()
+    retrofitConverterMoshiLib()
+    retrofitConverterScalarsiLib()
 }
 
 fun DependencyHandlerScope.retrofitLib() = this.add(
@@ -13,7 +14,12 @@ fun DependencyHandlerScope.retrofitLib() = this.add(
     Dependency.Retrofit.retrofit
 )
 
-fun DependencyHandlerScope.retrofitMoshiLib() = this.add(
+fun DependencyHandlerScope.retrofitConverterMoshiLib() = this.add(
     implementation,
-    Dependency.Retrofit.retrofitMoshi
+    Dependency.Retrofit.retrofitConverterMoshi
+)
+
+fun DependencyHandlerScope.retrofitConverterScalarsiLib() = this.add(
+    implementation,
+    Dependency.Retrofit.retrofitConverterScalars
 )
