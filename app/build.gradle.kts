@@ -86,6 +86,7 @@ dependencies {
     moshiLibs()
     retrofitLibs()
     okHttpsLibs()
+    roomLibs()
     frescoLibs()
     rxLibs()
     testLibs()

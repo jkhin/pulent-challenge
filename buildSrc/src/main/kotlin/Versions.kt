@@ -22,16 +22,23 @@ object Versions {
 
     object Kotlin {
         const val kotlinVersion = "1.3.72"
+        const val kotlinCoroutinesVersion = "1.3.5"
+    }
+
+    object Room {
+        const val roomVersion = "2.2.5"
     }
 
     object Tests {
         const val jUnitVersion = "4.13"
         const val androidxTestExtVersion = "1.1.1"
         const val espressoCoreVersion = "3.2.0"
+        const val kluentVersion  = "1.56"
     }
 
     object Koin {
         const val koinVersion = "2.1.5"
+        const val koinTestVersion = "2.1.5"
     }
 
     object Fresco {

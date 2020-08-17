@@ -6,7 +6,7 @@ import org.gradle.kotlin.dsl.DependencyHandlerScope
 
 fun DependencyHandlerScope.kotlinLibs() = with(this) {
     kotlinLib()
-    kotlinCoroutinesCore()
+    kotlinCoroutinesLib()
 }
 
 fun DependencyHandlerScope.kotlinLib() = this.add(
@@ -14,7 +14,7 @@ fun DependencyHandlerScope.kotlinLib() = this.add(
     Dependency.Kotlin.kotlin
 )
 
-fun DependencyHandlerScope.kotlinCoroutinesCore() = this.add(
+fun DependencyHandlerScope.kotlinCoroutinesLib() = this.add(
     implementation,
-    Dependency.Android.appCompat
+    Dependency.Kotlin.kotlinCoroutines
 )

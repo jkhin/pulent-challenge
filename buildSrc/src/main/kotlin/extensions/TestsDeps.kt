@@ -9,6 +9,9 @@ fun DependencyHandler.testLibs() = with(this) {
     jUnitLib()
     androidxTestExtLib()
     espressoCoreLib()
+    koinTestLib()
+    kluentLib()
+
 }
 
 fun DependencyHandler.jUnitLib() = this.add(
@@ -24,4 +27,14 @@ fun DependencyHandler.androidxTestExtLib() = this.add(
 fun DependencyHandler.espressoCoreLib() = this.add(
     androidTestImplementation,
     Dependency.Tests.espressoCore
+)
+
+fun DependencyHandler.koinTestLib() = this.add(
+    testImplementation,
+    Dependency.Koin.koinTest
+)
+
+fun DependencyHandler.kluentLib() = this.add(
+    testImplementation,
+    Dependency.Tests.kluent
 )

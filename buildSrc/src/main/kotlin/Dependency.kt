@@ -22,11 +22,13 @@ object Dependency {
 
     object Kotlin {
         const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Kotlin.kotlinVersion}"
+        const val kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Kotlin.kotlinCoroutinesVersion}"
     }
 
     object Koin {
         const val koin = "org.koin:koin-android:${Versions.Koin.koinVersion}"
         const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.Koin.koinVersion}"
+        const val koinTest = "org.koin:koin-test:${Versions.Koin.koinTestVersion}"
     }
 
     object Tests {
@@ -34,6 +36,14 @@ object Dependency {
         const val androidxTestExt = "androidx.test.ext:junit:${Versions.Tests.androidxTestExtVersion}"
         const val espressoCore =
             "androidx.test.espresso:espresso-core:${Versions.Tests.espressoCoreVersion}"
+        const val kluent = "org.amshove.kluent:kluent-android:${Versions.Tests.kluentVersion}"
+    }
+
+    object Room {
+       const val roomRuntime = "androidx.room:room-runtime:${Versions.Room.roomVersion}"
+       const val roomCompiler = "androidx.room:room-compiler:${Versions.Room.roomVersion}"
+       const val roomKtx = "androidx.room:room-ktx:${Versions.Room.roomVersion}"
+       const val roomTesting = "androidx.room:room-testing:${Versions.Room.roomVersion}"
     }
 
     object Fresco {
