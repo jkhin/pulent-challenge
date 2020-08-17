@@ -22,10 +22,10 @@ class SearchViewModel(
 
     private var _state = MutableLiveData<SearchViewState>()
 
-    fun searchMusic(term: String) {
+    fun searchSongs(term: String) {
         viewModelScope.launch(errorHandler) {
             io {
-                val searchResults = searchMusicUseCase.searchMusic(term)
+                val searchResults = searchMusicUseCase.searchSongs(term)
                 val songs = searchResults.map(songModelMapper::map)
 
                 ui {

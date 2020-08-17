@@ -21,7 +21,7 @@ class SearchMusicRepositoryImpl(
     private val songEntityMapper: SongEntityMapper
 ): SearchMusicRepository {
 
-    override suspend fun search(request: SearchRequest): List<Song> {
+    override suspend fun searchSongs(request: SearchRequest): List<Song> {
         return if (NetworkUtils.hasInternetConnection()) {
             saveTermIntoLocalStorage(request.term)
 

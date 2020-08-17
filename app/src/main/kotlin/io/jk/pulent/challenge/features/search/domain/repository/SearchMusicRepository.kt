@@ -4,5 +4,5 @@ import io.jk.pulent.challenge.features.search.data.datasource.rest.request.Searc
 import io.jk.pulent.challenge.features.search.domain.model.Song
 
 interface SearchMusicRepository {
-    suspend fun search(request: SearchRequest): List<Song>
+    suspend fun searchSongs(request: SearchRequest): List<Song>
 }

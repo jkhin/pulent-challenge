@@ -8,9 +8,9 @@ class SearchMusicUseCase(
     private val searchRepository: SearchMusicRepository
 ) {
 
-    suspend fun searchMusic(term: String): List<Song> {
+    suspend fun searchSongs(term: String): List<Song> {
         val request = SearchRequest(term)
-        return searchRepository.search(request)
+        return searchRepository.searchSongs(request)
     }
 
 }
