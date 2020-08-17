@@ -85,6 +85,7 @@ dependencies {
     materialSearchLib()
     koinLibs()
     moshiLibs()
+    lottieLib()
     retrofitLibs()
     okHttpsLibs()
     roomLibs()

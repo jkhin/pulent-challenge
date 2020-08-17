@@ -6,8 +6,8 @@ import io.jk.pulent.challenge.features.search.data.datasource.database.SongsLoca
 import io.jk.pulent.challenge.features.search.data.datasource.rest.SongCloudStore
 import io.jk.pulent.challenge.features.search.data.mapper.SongEntityMapper
 import io.jk.pulent.challenge.features.search.data.mapper.SongMapper
-import io.jk.pulent.challenge.features.search.domain.interactor.SearchMusicUseCase
-import io.jk.pulent.challenge.features.search.domain.repository.SearchMusicRepository
+import io.jk.pulent.challenge.features.search.domain.interactor.SearchSongsUseCase
+import io.jk.pulent.challenge.features.search.domain.repository.SongsRepository
 import io.jk.pulent.challenge.features.search.presentation.model.mapper.SongModelMapper
 import org.amshove.kluent.shouldNotBeNull
 import org.junit.Before
@@ -47,12 +47,12 @@ class SearchModuleDependenciesTest: AutoCloseKoinTest() {
 
     @Test
     fun `solving dependencies for SearchMusicUseCase`() {
-        getComponent<SearchMusicUseCase>().shouldNotBeNull()
+        getComponent<SearchSongsUseCase>().shouldNotBeNull()
     }
 
     @Test
     fun `solving dependencies for SearchRepository`() {
-        getComponent<SearchMusicRepository>().shouldNotBeNull()
+        getComponent<SongsRepository>().shouldNotBeNull()
     }
 
     @Test

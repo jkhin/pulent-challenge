@@ -16,15 +16,15 @@ import io.jk.pulent.challenge.features.home.presentation.viewmodel.viewstate.Ter
 import io.jk.pulent.challenge.features.search.presentation.adapters.SearchResultsAdapter
 import io.jk.pulent.challenge.features.search.presentation.adapters.TermsHistoryAdapter
 import io.jk.pulent.challenge.features.search.presentation.model.SongModel
-import io.jk.pulent.challenge.features.search.presentation.viewmodel.SearchViewModel
-import io.jk.pulent.challenge.features.search.presentation.viewmodel.viewstate.SearchViewState
+import io.jk.pulent.challenge.features.search.presentation.viewmodel.SongsViewModel
+import io.jk.pulent.challenge.features.search.presentation.viewmodel.viewstate.SongsViewState
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class HomeFragment : Fragment(), TermsHistoryAdapter.Listener {
 
-    private val searchViewModel by viewModel<SearchViewModel>()
+    private val searchViewModel by viewModel<SongsViewModel>()
 
     private val termsViewModel by viewModel<TermsViewModel>()
 
@@ -65,13 +65,15 @@ class HomeFragment : Fragment(), TermsHistoryAdapter.Listener {
                 is TermViewState.TermStored -> updateTermsInAdapter(it.terms)
             }
         })
-        searchViewModel.state.observe(viewLifecycleOwner, Observer<SearchViewState> {
+        searchViewModel.state.observe(viewLifecycleOwner, Observer<SongsViewState> {
             when (it) {
-                is SearchViewState.SuccessSearch -> updateSearchResultsAdapter(it.results)
+                is SongsViewState.SuccessSearch -> updateSearchResultsAdapter(it.results)
+                is SongsViewState.OnLoading -> {
+                    loadingAnimation?.visibility = if (it.isLoading) View.VISIBLE else View.GONE
+                    rvHomeSearchResults?.visibility = if (it.isLoading) View.GONE else View.VISIBLE
+                }
             }
         })
-
-        termsViewModel.getPrevThreeTermsStored()
     }
 
     private fun initializeViewSettings() {

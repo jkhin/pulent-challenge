@@ -36,19 +36,6 @@ class TermsViewModel(
         }
     }
 
-    fun getPrevThreeTermsStored() {
-        viewModelScope.launch(errorHandler) {
-            io {
-                val searchResults = getTermsUseCase.getTermsHistory(false)
-                val terms = searchResults.map(termsModelMapper::map)
-
-                ui {
-                    _state.value = TermViewState.TermStored(terms)
-                }
-            }
-        }
-    }
-
 
     private val errorHandler = CoroutineExceptionHandler { _, exception ->
         ui { exception.printStackTrace() }

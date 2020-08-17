@@ -55,9 +55,8 @@ object Dependency {
         const val fresco = "com.facebook.fresco:fresco:${Versions.Fresco.frescoVersion}"
     }
 
-    object Rx {
-        const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.Rx.rxAndroidVersion}"
-        const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.Rx.rxKotlinVersion}"
+    object Lottie {
+        const val lottie = "com.airbnb.android:lottie:${Versions.Lottie.lottieVersion}"
     }
 
     object Retrofit {

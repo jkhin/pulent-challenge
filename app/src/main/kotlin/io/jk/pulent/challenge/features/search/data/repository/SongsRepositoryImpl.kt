@@ -11,15 +11,15 @@ import io.jk.pulent.challenge.features.search.data.datasource.rest.response.Song
 import io.jk.pulent.challenge.features.search.data.mapper.SongEntityMapper
 import io.jk.pulent.challenge.features.search.data.mapper.SongMapper
 import io.jk.pulent.challenge.features.search.domain.model.Song
-import io.jk.pulent.challenge.features.search.domain.repository.SearchMusicRepository
+import io.jk.pulent.challenge.features.search.domain.repository.SongsRepository
 
-class SearchMusicRepositoryImpl(
+class SongsRepositoryImpl(
     private val cloudStore: SongCloudStore,
     private val termsLocalStorage: TermsLocalStorage,
     private val songsLocalStorage: SongsLocalStorage,
     private val songMapper: SongMapper,
     private val songEntityMapper: SongEntityMapper
-): SearchMusicRepository {
+): SongsRepository {
 
     override suspend fun searchSongs(request: SearchRequest): List<Song> {
         return if (NetworkUtils.hasInternetConnection()) {

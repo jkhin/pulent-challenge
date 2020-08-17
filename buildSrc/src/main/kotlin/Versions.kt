@@ -54,9 +54,8 @@ object Versions {
         const val timberVersion = "4.7.1"
     }
 
-    object Rx {
-        const val rxKotlinVersion = "2.4.0"
-        const val rxAndroidVersion = "2.1.1"
+    object Lottie {
+        const val lottieVersion = "3.4.0"
     }
 
     object Retrofit {
