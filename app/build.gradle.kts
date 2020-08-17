@@ -82,12 +82,12 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     kotlinLibs()
     androidLibs()
+    materialSearchLib()
     koinLibs()
     moshiLibs()
     retrofitLibs()
     okHttpsLibs()
     roomLibs()
     frescoLibs()
-    rxLibs()
     testLibs()
 }

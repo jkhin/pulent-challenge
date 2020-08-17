@@ -20,6 +20,10 @@ object Versions {
         const val androidLifeCycleViewModelVersion = "2.2.0"
     }
 
+    object MaterialSearch {
+        const val materialSearchVersion = "2.2.0@aar"
+    }
+
     object Kotlin {
         const val kotlinVersion = "1.3.72"
         const val kotlinCoroutinesVersion = "1.3.5"

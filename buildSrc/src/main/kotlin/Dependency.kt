@@ -20,6 +20,10 @@ object Dependency {
             "com.google.android.material:material:${Versions.AndroidLib.androidMaterialVersion}"
     }
 
+    object MaterialSearch {
+        const val materialSearch = "com.lapism:search:${Versions.MaterialSearch.materialSearchVersion}"
+    }
+
     object Kotlin {
         const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Kotlin.kotlinVersion}"
         const val kotlinCoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Kotlin.kotlinCoroutinesVersion}"
