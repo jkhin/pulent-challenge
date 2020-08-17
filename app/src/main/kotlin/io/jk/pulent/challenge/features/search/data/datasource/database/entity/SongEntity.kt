@@ -1,9 +1,6 @@
-package io.jk.pulent.challenge.features.search.data.datasource.rest.response
+package io.jk.pulent.challenge.features.search.data.datasource.database.entity
 
-import com.squareup.moshi.JsonClass
-
-@JsonClass(generateAdapter = true)
-data class SearchResponse(
+data class SongEntity(
     val artistId: Int,
     val artistName: String,
     val artistViewUrl: String,

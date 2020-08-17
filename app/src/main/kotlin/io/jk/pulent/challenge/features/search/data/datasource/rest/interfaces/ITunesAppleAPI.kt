@@ -1,6 +1,6 @@
 package io.jk.pulent.challenge.features.search.data.datasource.rest.interfaces
 
-import io.jk.pulent.challenge.features.search.data.datasource.rest.response.SearchResponse
+import io.jk.pulent.challenge.features.search.data.datasource.rest.response.SearchResultResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,6 +11,6 @@ interface ITunesAppleAPI {
         @Query("term") term : String,
         @Query("mediaType") mediaType: String? = "music",
         @Query("limit") limit: Int
-    ): SearchResponse
+    ): SearchResultResponse
 
 }

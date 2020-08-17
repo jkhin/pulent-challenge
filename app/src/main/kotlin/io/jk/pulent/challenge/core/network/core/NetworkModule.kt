@@ -1,6 +1,6 @@
 package io.jk.pulent.challenge.core.network.core
 
-import io.jk.pulent.challenge.core.network.api.ITunesAppleAPI
+import io.jk.pulent.challenge.core.network.api.ItunesApi
 import io.jk.pulent.challenge.core.utils.createHttpClient
 import io.jk.pulent.challenge.core.utils.createRetrofit
 import org.koin.core.qualifier.named
@@ -10,6 +10,7 @@ import retrofit2.Retrofit
 
 const val NAMED_ITUNES_APPLE_CLIENT = "ITUNES_APPLE_CLIENT"
 const val NAMED_ITUNES_APPLE = "ITUNES_APPLE"
+const val NAMED_ITUNES_APPLE_API = "NAMED_ITUNES_APPLE_API"
 
 internal val networkModule by lazy {
 
@@ -22,15 +23,11 @@ internal val networkModule by lazy {
             )
         }
 
-        single {
-            provideItunesAppleApi(
-                get(named(NAMED_ITUNES_APPLE))
-            )
-        }
+        single(named(NAMED_ITUNES_APPLE_API)) { provideItunesAppleApi(get(named(NAMED_ITUNES_APPLE))) }
     }
 
 }
 
-fun provideItunesAppleApi(retrofit: Retrofit): ITunesAppleAPI {
-    return retrofit.create(ITunesAppleAPI::class.java)
+fun provideItunesAppleApi(retrofit: Retrofit): ItunesApi {
+    return retrofit.create(ItunesApi::class.java)
 }
