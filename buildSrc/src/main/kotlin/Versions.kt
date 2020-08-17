@@ -34,6 +34,7 @@ object Versions {
         const val androidxTestExtVersion = "1.1.1"
         const val espressoCoreVersion = "3.2.0"
         const val kluentVersion  = "1.56"
+        const val androidxTestCore = "1.0.0"
     }
 
     object Koin {

@@ -7,6 +7,7 @@ import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.cache.MemoryCacheParams
 import com.facebook.imagepipeline.core.ImagePipelineConfig
 import injectModules
+import io.jk.pulent.challenge.core.db.PulentChallengeDataBase
 
 class PulentChallengeApplication: Application() {
 
@@ -20,6 +21,7 @@ class PulentChallengeApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
+        initializeRoom()
         initializeKoin()
         initializeFresco()
     }
@@ -53,6 +55,10 @@ class PulentChallengeApplication: Application() {
             .build()
 
         Fresco.initialize(this@PulentChallengeApplication, imagePipelineConfig)
+    }
+
+    private fun initializeRoom() {
+        PulentChallengeDataBase.initializeDatabase(this)
     }
 
 }

@@ -7,11 +7,11 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 
 fun DependencyHandler.testLibs() = with(this) {
     jUnitLib()
-    androidxTestExtLib()
-    espressoCoreLib()
+    androidxTestCoreLib()
     koinTestLib()
     kluentLib()
-
+    androidxTestExtLib()
+    espressoCoreLib()
 }
 
 fun DependencyHandler.jUnitLib() = this.add(
@@ -19,13 +19,18 @@ fun DependencyHandler.jUnitLib() = this.add(
     Dependency.Tests.jUnit
 )
 
+fun DependencyHandler.androidxTestCoreLib() = this.add(
+    testImplementation,
+    Dependency.Tests.androidxTestCore
+)
+
 fun DependencyHandler.androidxTestExtLib() = this.add(
-    androidTestImplementation,
+    testImplementation,
     Dependency.Tests.androidxTestExt
 )
 
 fun DependencyHandler.espressoCoreLib() = this.add(
-    androidTestImplementation,
+    testImplementation,
     Dependency.Tests.espressoCore
 )
 

@@ -1,12 +1,12 @@
 package io.jk.pulent.challenge.features.search.data.mapper
 
-import io.jk.pulent.challenge.features.search.data.datasource.rest.response.SearchResultResponse
 import io.jk.pulent.challenge.features.search.data.datasource.database.entity.SongEntity
 import io.jk.pulent.challenge.features.search.data.datasource.rest.response.SongResponse
 
 class SongEntityMapper {
     fun map(response: SongResponse): SongEntity = with(response) {
         SongEntity(
+            id = Long.MAX_VALUE,
             artistId = artistId,
             artistName = artistName,
             artistViewUrl = artistViewUrl,

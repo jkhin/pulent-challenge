@@ -33,6 +33,7 @@ object Dependency {
 
     object Tests {
         const val jUnit = "junit:junit:${Versions.Tests.jUnitVersion}"
+        const val androidxTestCore = "androidx.test:core:${Versions.Tests.androidxTestCore}"
         const val androidxTestExt = "androidx.test.ext:junit:${Versions.Tests.androidxTestExtVersion}"
         const val espressoCore =
             "androidx.test.espresso:espresso-core:${Versions.Tests.espressoCoreVersion}"
