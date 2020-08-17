@@ -29,7 +29,7 @@ class SearchViewModel(
                 val songs = searchResults.map(songModelMapper::map)
 
                 ui {
-                    _state.value = SearchViewState.SearchMusic(songs)
+                    _state.value = SearchViewState.SuccessSearch(songs)
                 }
             }
         }

@@ -8,7 +8,9 @@ import io.jk.pulent.challenge.R
 import io.jk.pulent.challenge.features.home.presentation.model.TermHistoryModel
 import kotlinx.android.synthetic.main.item_view_search_term_history.view.*
 
-class TermsHistoryAdapter : RecyclerView.Adapter<TermsHistoryAdapter.TermViewHolder>() {
+class TermsHistoryAdapter(
+    private val listener: Listener
+) : RecyclerView.Adapter<TermsHistoryAdapter.TermViewHolder>() {
 
     private val terms: MutableList<TermHistoryModel> = mutableListOf()
 
@@ -52,7 +54,8 @@ class TermsHistoryAdapter : RecyclerView.Adapter<TermsHistoryAdapter.TermViewHol
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TermViewHolder =
         TermViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_view_search_term_history, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_view_search_term_history, parent, false)
         )
 
     override fun getItemCount() = termsToBeShown.size
@@ -63,6 +66,10 @@ class TermsHistoryAdapter : RecyclerView.Adapter<TermsHistoryAdapter.TermViewHol
 
     inner class TermViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(model: TermHistoryModel) = with(itemView) {
+            setOnClickListener {
+                if (adapterPosition < 0) return@setOnClickListener
+                listener.doOnTermSelected(model.term)
+            }
             tvItemTerm?.text = model.term
         }
     }

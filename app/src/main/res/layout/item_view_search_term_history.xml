@@ -15,12 +15,15 @@
         android:textSize="16sp"
         android:padding="16dp"
         android:ellipsize="end"
-        android:textColor="@color/colorAccent"
+        android:textColor="#5C5C5C"
         tools:text="This is my text"
+        android:drawablePadding="8dp"
+        android:drawableEnd="@drawable/ic_arrow_forward_64x64"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

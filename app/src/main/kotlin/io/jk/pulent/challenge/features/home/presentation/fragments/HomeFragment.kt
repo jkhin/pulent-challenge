@@ -14,7 +14,9 @@ import io.jk.pulent.challenge.features.home.presentation.viewmodel.TermsViewMode
 import io.jk.pulent.challenge.features.home.presentation.viewmodel.viewstate.TermViewState
 import io.jk.pulent.challenge.features.search.presentation.adapters.SearchResultsAdapter
 import io.jk.pulent.challenge.features.search.presentation.adapters.TermsHistoryAdapter
+import io.jk.pulent.challenge.features.search.presentation.model.SongModel
 import io.jk.pulent.challenge.features.search.presentation.viewmodel.SearchViewModel
+import io.jk.pulent.challenge.features.search.presentation.viewmodel.viewstate.SearchViewState
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,7 +27,9 @@ class HomeFragment : Fragment(), TermsHistoryAdapter.Listener {
 
     private val termsViewModel by viewModel<TermsViewModel>()
 
-    private val termsAdapter: TermsHistoryAdapter by lazy { TermsHistoryAdapter() }
+    private val termsAdapter: TermsHistoryAdapter by lazy {
+        TermsHistoryAdapter(this@HomeFragment)
+    }
 
     private val searchResultsAdapter: SearchResultsAdapter by lazy {
         SearchResultsAdapter()
@@ -50,13 +54,22 @@ class HomeFragment : Fragment(), TermsHistoryAdapter.Listener {
         termsAdapter.clearAndAddAll(terms)
     }
 
+    private fun updateSearchResultsAdapter(songs: List<SongModel>) {
+        searchResultsAdapter.clearAndAddAll(songs)
+    }
+
     private fun initializeObservers() {
         termsViewModel.state.observe(viewLifecycleOwner, Observer<TermViewState> {
             when (it) {
                 is TermViewState.TermStored -> updateTermsInAdapter(it.terms)
-                is TermViewState.PrevThreeTermsStored -> Unit
             }
         })
+        searchViewModel.state.observe(viewLifecycleOwner, Observer<SearchViewState> {
+            when (it) {
+                is SearchViewState.SuccessSearch -> updateSearchResultsAdapter(it.results)
+            }
+        })
+
         termsViewModel.getPrevThreeTermsStored()
     }
 
@@ -72,13 +85,15 @@ class HomeFragment : Fragment(), TermsHistoryAdapter.Listener {
             setAdapter(termsAdapter)
             setTextHint(getString(R.string.text_type_song_name))
         }
+
+        rvHomeSearchResults?.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            adapter = searchResultsAdapter
+        }
     }
 
     private fun initializeViewEvents() {
         msHomeSearchInput?.apply {
-            setOnClickListener {
-
-            }
             setOnNavigationClickListener(object : SearchLayout.OnNavigationClickListener {
                 override fun onNavigationClick() {
                     msHomeSearchInput.requestFocus()
@@ -90,7 +105,6 @@ class HomeFragment : Fragment(), TermsHistoryAdapter.Listener {
                     with(termsAdapter) {
                         if (newText.isNotBlank()) filter(newText.toString()) else clearFilter()
                     }
-
                     return true
                 }
 
@@ -106,7 +120,7 @@ class HomeFragment : Fragment(), TermsHistoryAdapter.Listener {
                     navigationIconSupport = if (hasFocus) {
                         termsViewModel.getAllTermsStored()
                         SearchLayout.NavigationIconSupport.ARROW
-                    } else{
+                    } else {
                         termsAdapter.clearAndAddAll(emptyList())
                         SearchLayout.NavigationIconSupport.NONE
                     }
@@ -117,8 +131,8 @@ class HomeFragment : Fragment(), TermsHistoryAdapter.Listener {
     }
 
     override fun doOnTermSelected(term: String) {
-
+        msHomeSearchInput?.clearFocus()
+        searchViewModel.searchSongs(term)
     }
-
 
 }
